@@ -1,0 +1,230 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8">
+        <link rel="stylesheet" href="dialog.css" type="text/css">
+        <style>
+        /*可去掉   就是所有点击后的伪元素边距
+        *,*::after,*::before {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+        }
+        */
+
+        html {
+        font-size: 62.5%;
+        }
+
+        body {
+        /* 
+        好像没什么影响
+        --light: hsl(0, 0%, 100%);
+        --background: linear-gradient(to right bottom, hsl(236, 50%, 50%), hsl(195, 50%, 50%)); */
+
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+
+        /* font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Open Sans', sans-serif; */
+
+         min-height: 100vh;/*我去是什么东西   不懂啊 */
+        background: linear-gradient(to bottom, hsl(236, 50%, 98%), hsl(236, 50%, 94%));
+        }
+
+        a,
+        a:link {
+        font-family: inherit;
+        text-decoration: none;
+        }
+
+        /* modal */
+        /*弹框*/
+        .modal-container {
+        position: fixed;
+        top: 0;
+        left: 0;
+        z-index: 2; /*优先级叠成   越小越高级,越是先显示*/ 
+        
+        /*这一段不太懂的点就是display为什么要给none的值*/
+        display: none; 
+        justify-content: center;
+        align-items: center;
+
+        width: 100%;
+        height: 100%;
+
+        background: hsla(0, 0%, 40%, .6); /*添加弹框后背景变成灰色*/
+        }
+
+        /* using :target */
+        /*这个是重点啊,去了之后就跳不出弹框*/
+        .modal-container:target {
+        display: flex;  /*flex赋值属性  将对象作为弹性伸缩盒显示。（伸缩盒最新版本）（CSS3） */
+        }
+        /*弹框后的样式*/
+        .modal {
+        width: 60rem;
+        padding: 4rem 2rem;
+        /* border-radius: .8rem; 四个角角变圆 */
+
+        /* color: var(--light); 设置点击按钮的文字颜色  可写成color:white; */
+        /* background: var(--background); 这只点击按钮的背景颜色  可写成其他颜色 */
+        background: pink;
+        /* box-shadow: .4rem .4rem 2.4rem .2rem hsla(236, 50%, 50%, 0.3);  边框阴影 */
+
+        /*位置调整,要不然返回的按钮X就不见了*/
+        position: relative;
+        overflow: hidden;
+        }
+        /*弹框后的(文字头)和(文字1)*/
+        /* .modal__details {
+        text-align: center;
+
+        margin-bottom: 4rem;
+        padding-bottom: 4rem;
+        border-bottom: 1px solid hsla(0, 0%, 100%, .4);
+        } */
+
+        /*弹框后的文字(文字头)*/
+        /* .modal__title {
+        font-size: 3.2rem;
+        } */
+
+        /*弹框后文字1的样式*/
+        .modal__description {
+        margin-top: 2rem;
+
+        font-size: 1.6rem;
+        font-style: italic;
+        }
+        /*弹框后的文字2样式*/
+        .modal__text {
+        padding: 0 4rem;
+        margin-bottom: 4rem;
+
+        font-size: 1.6rem;
+        line-height: 2;
+        }
+        /*弹框后的文字*/
+        /*去了之后没啥影响.....什么作用不知道 
+        .modal__text::before {
+        content: '';
+
+        position: absolute;
+        top: 0%;
+        left: 100%;
+        -webkit-transform: translate(-50%, -50%);
+                transform: translate(-50%, -50%);
+
+        width: 18rem;
+        height: 18rem;
+        border: 1px solid hsla(0, 0%, 100%, .2);
+        border-radius: 100rem;
+
+        pointer-events: none;
+        } */
+        
+        /*完成按钮*/
+        .modal__btn {
+        /*完成按钮的框框   样式自由定义*/
+        padding: 1rem 1.6rem;
+        border: 1px solid hsla(0, 0%, 100%, .4);
+        border-radius: 100rem;
+
+        /* color: inherit;继承父元素颜色   也可以直接设置白色 可有可无,只是增加视觉效果*/
+        background: transparent;   /*背景颜色*/
+        font-size: 1.4rem;
+
+        /*transition: .2s; 透明延时时间,增加视觉效果,可有可无*/
+        cursor: pointer;
+        }
+
+        /*完成按钮的伪类*/
+        /* 光标移到完成时的样式(伪类)和点击按钮时的样式  focus可有可无,只是增加视觉效果
+        .modal__btn:hover,
+        .modal__btn:focus {
+        border-color: hsla(0, 0%, 100%, .6);
+        -webkit-transform: translateY(-.2rem);
+                transform: translateY(-.2rem);
+        } */
+
+        /* links */
+        .link-1 {
+        font-size: 1.8rem; /*点击按钮的字体*/
+
+        /* color: var(--light); 设置点击按钮的文字颜色  可写成color:white; */
+        
+        /* background: var(--background); 这只点击按钮的背景颜色  可写成其他颜色 */
+        background: orange;
+        padding: 1.4rem 3.2rem; /*背景颜色的大小 可有可无 增加直觉效果*/
+        /* box-shadow: .4rem .4rem 2.4rem .2rem hsla(236, 50%, 50%, 0.3);  点击按钮的背景阴影,可有可无,只是增加视觉效果  */
+        /*border-radius: 100rem;   设置点击按钮的对角是否为圆角  k可有可无,增加直觉效果*/
+        
+
+        /*transition: .2s; 透明延时时间,增加视觉效果,可有可无*/
+        }
+        /*光标移到点击时的样式(伪类)和点击按钮时的样式  focus可有可无,只是增加视觉效果
+        .link-1:hover,
+        .link-1:focus {
+        -webkit-transform: translateY(-.2rem);
+                transform: translateY(-.2rem);
+        box-shadow: 0 0 4.4rem .2rem hsla(236, 50%, 50%, 0.4);
+        } 
+        */
+
+        /*返回按钮X*/
+        .link-2 {
+        /*给返回按钮X一个圆圈的边框*/
+        width: 4rem;
+        height: 4rem;
+        border: 1px solid hsla(0, 0%, 100%, .4);
+        border-radius: 100rem;
+
+        /* color: inherit;继承父元素颜色   也可以直接设置白色 可有可无,只是增加视觉效果*/
+        font-size: 2.2rem; /*设置返回按钮大小*/
+
+        position: absolute;    /*设置了position才能通top和right等方向属性    10px=1rem*/
+        top: 20px;            
+        right: 2rem;
+        /*这个不懂,但是时设置X文字的位置*/
+        display: flex;
+        justify-content: center;
+        align-items: center;
+
+        /*transition: .2s; 透明延时时间,增加视觉效果,可有可无*/
+        }
+
+        /*点击弹框后返回按钮*/
+        .link-2::before {
+        content: '×';   /*弹框后返回按钮的文字*/
+
+        -webkit-transform: translateY(-.1rem);
+        transform: translateY(-.1rem);              /*返回按钮样式*/
+        }
+
+        /*光标放在返回按钮时的样式*/
+        .link-2:hover,
+        .link-2:focus {
+        border-color: hsla(0, 0%, 100%, .6); /*标放在返回按钮时变亮*/
+        -webkit-transform: translateY(-.2rem);
+                transform: translateY(-.2rem);
+        }
+        </style>
+    </head>
+    <body>
+        <a href="#modal-opened" class="link-1"  id="modal-closed">点击</a>
+        <div class="modal-container" id="modal-opened">
+            <div class="modal">
+                <div class="modal__details">
+                    <h1 class="modal__title">文字头</h1>
+                    <p class="modal__description">文字1文字1文字1文字1文字1文字1文字1文字1文字1文字1.</p>
+                </div>
+                <p class="modal__text">文字2文字2文字2文字2文字2文字2文字2文字2.</p>
+                <button class="modal__btn" >完成 →</button>
+                <a href="#modal-closed" class="link-2"></a> <!--弹框后返回按钮-->
+            </div>
+        </div>
+    </body>
+</html>
