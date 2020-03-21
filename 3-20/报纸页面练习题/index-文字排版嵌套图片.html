@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>文字排版嵌套图片</title>
+    <style>
+        *{
+            margin: 0 auto;
+            padding: 0;
+        }
+        div{
+            width: 500px;
+        }
+        div::after{
+            content: "";
+            display: block;
+            clear: both;
+        }
+        p{
+            text-indent: 2em;
+        }
+        .p1{
+            text-indent: 0;
+        }
+        .p1::first-letter{
+            float: left; /*不给float就不会围绕第一个字了*/
+            font-size: 100px;
+            color: yellow;
+        }
+        img{
+
+            border: 15px solid transparent;
+            float: right;
+            position: relative;
+            top: 150px;
+            z-index: 0;
+            
+        }
+    </style>
+</head>
+<body>
+    <div>
+        <img src="pic2.png"/>
+        <p class="p1">前前前前前前前前前前前前前前前前前前前
+            前前前前前前前前前前前前前前前前前前前前前前前前
+            前前前前前前前前前前前前前前前前前前前前前前前前
+            前前前前前前前前前前前前前前前前前前前前前前前前
+            前前前前前前前前前前前前前前前前前前前前前前前前
+            前前前前前前前前前前前前前前前前前前前前前前前前
+            前前前前前前前前前前前前前前前前前前前前前前前前
+            前前前前前前前前前前前前前前前前前前前前前前前前
+            前前前前前前前前前前前前前前前前前前前前前前前前
+            前前前前前前前前前前前前</p>
+        <p>前前前前前前前前前前前前前前前前前前前前前前前前前
+            前前前前前前前前前前前前前前前前前前前前前前前前
+            前前前前前前前前前前前前前前前前前前前前前前前前
+            前前前前前前前前前前前前前前前前前前前前前前前前
+            前前前前前前前前前前前前前前前前前前前前前前前前
+            前前前前前前前前前前前前前前前前前前前前前前</p>
+        <p>前前前前前前前前前前前前前前前前前前前前前前前前
+           前前前前前前前前前前前前前前前前前前前前前前前前
+           前前前前前前</p>
+           
+    </div>
+</body>
+</html>
