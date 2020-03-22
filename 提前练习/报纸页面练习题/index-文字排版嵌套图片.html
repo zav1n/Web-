@@ -9,10 +9,27 @@
             margin: 0 auto;
             padding: 0;
         }
-        div{
+        .d1{
             width: 500px;
+            
         }
-        div::after{
+       
+        .pic_{
+            width: 205px;
+            height: 350px;
+            border: 15px solid transparent;
+            float: right;
+            margin-top: 80px;
+            
+        }
+        img{
+            width: 205px;
+            height: 350px;
+            border: 15px solid transparent;
+            float: right;
+            margin-top: 118px;
+        }
+        .d1::after{
             content: "";
             display: block;
             clear: both;
@@ -20,29 +37,29 @@
         p{
             text-indent: 2em;
         }
-        .p1{
+        .first_big{
             text-indent: 0;
         }
-        .p1::first-letter{
+        .first_big::first-letter{
             float: left; /*不给float就不会围绕第一个字了*/
             font-size: 100px;
             color: yellow;
         }
-        img{
-
-            border: 15px solid transparent;
+        .p1::before{
+            content: "";
             float: right;
-            position: relative;
-            top: 150px;
-            z-index: 0;
-            
+            margin-right: 100px;
         }
+        
     </style>
 </head>
 <body>
-    <div>
-        <img src="pic2.png"/>
-        <p class="p1">前前前前前前前前前前前前前前前前前前前
+    <div class="d1">
+        
+        <p class="p1">
+            <img src="pic2.png"/>
+            <p class="first_big">前</p>前前前前前前前前前前
+            前前前前前前前前前前前前前前前前前前前前前前前前
             前前前前前前前前前前前前前前前前前前前前前前前前
             前前前前前前前前前前前前前前前前前前前前前前前前
             前前前前前前前前前前前前前前前前前前前前前前前前
@@ -52,7 +69,10 @@
             前前前前前前前前前前前前前前前前前前前前前前前前
             前前前前前前前前前前前前前前前前前前前前前前前前
             前前前前前前前前前前前前</p>
+            
         <p>前前前前前前前前前前前前前前前前前前前前前前前前前
+            前前前前前前前前前前前前前前前前前前前前前前前前
+            前前前前前前前前前前前前前前前前前前前前前前前前
             前前前前前前前前前前前前前前前前前前前前前前前前
             前前前前前前前前前前前前前前前前前前前前前前前前
             前前前前前前前前前前前前前前前前前前前前前前前前
