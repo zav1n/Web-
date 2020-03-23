@@ -4,6 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>报纸</title>
+    <link rel="stylesheet" href="tool.css"/>
 </head>
     <style>
         *{
@@ -12,14 +13,11 @@
         }
         html,body{
             height: 100%;
-            
         }
         .container{
             margin: auto;
-
             width: 800px;
             height: 100%;
-            border: 1px dashed black;
         }
         .top{
             width: 100%;
@@ -40,28 +38,404 @@
             font-weight: 700;
             color: coral;
         }
-        .content_1{
-            width: 415px;
-            height: 195px;
-            background-color: coral;
+
+        .content_1_img{
+            
             margin-top: 22px;
+
         }
-        .content_1 img:first-child{
-            width: 415px;
-            height: 195px;
+        .fliter_img{
+            width: 530px;
+        }
+        .fliter_img img:first-child{
+            display: block;
+            position: absolute;
+            width: 530px;
+            height: 270px;
+
+        }
+        .fliter_img div:nth-of-type(1){
+            float: left;
+            width: 33%;
+            height: 270px;
+            background-color: darkgreen;
+            opacity: 0.3;
+        }
+        .fliter_img div:nth-of-type(2){
+            float: right;
+            width: 33%;
+            height: 270px;
+            background-color: darkred;
+            opacity: 0.3;
+        }
+        .content_1_word{
+            border-top: 1px solid #d45d5c;
+            width: 210px;
+            height: 269px;
+            position: relative;
+            top:-269px;
+            right: -73.8%;
+        }
+        .content_1_word a{
+            font-size: 15px;
+            color: black;
+        }
+        .content_1_word p:nth-child(1):first-letter{
+            font-size: 25px;
+        }
+        .content_1_word p:nth-child(2):first-letter{
+            font-size: 25px;
+        }
+        .content_1_word p:nth-child(3){
+            color: gray;
+            word-break: break-all;
+            font-size: 13px;
+        }
+        .content_1_word p:nth-child(4){
+            color: #75b86b;
+            font-size: 100px;
+            font-weight: 900;
+            font-family: 等线;
+        }
+        .content_1_word p:nth-child(5){
+            font-size: 50px;
+            color: #ce8696;
+            font-family: 等线;
+        }
+        .content_1_word p:nth-child(6){
+            position: relative;
+            top:-40px;
+            left: 70px;
+            color: #ce8696;
+        }
+        .content_1_word p:nth-child(7){
+            word-break: break-all;
+            position: relative;
+            top:-42px;
+            left: 70px;
+            color: gray;
+        }
+        .content_2_article{
+            margin-top: 25px;
+            width: 30%;  /*可优化  把三个装在一起*/   
+            height: 215px;
+        }
+        .content_2_article_one a:nth-child(1){
+            color: green;
+            font-size: 20px;
+            line-height: 45px;
+        }
+        .content_2_article_two{
+            position: relative;
+            top: -215px;
+            left: 110%;
+        }
+        .content_2_article_two a:nth-child(1){
+            color: orange;
+            font-size: 20px;
+            line-height: 45px;
+        }
+
+        .content_2_article_three{
+            position: relative;
+            top: -427px;
+            left: 218%;
+        }
+        .content_2_article_three a:nth-child(1){
+            color: red;
+            font-size: 20px;
+            line-height: 45px;
+        }
+        .content_2_article_three p:nth-of-type(n+2)
+        {   
+            margin-top: 10px;
+            line-height: -20px;
+        }
+        .content_2_article_three p:nth-of-type(n+5)
+        {      
+            position: relative;
+            top: -85px;
+            left: 30%;
+            color: orange;
+        }
+        .content_3{
+            margin-top: 30px;
+            width:100%;
+        }
+        .content_3_one{
+            float: left;
+            width: 48%;
+            border-right: 10px solid transparent;
+        }
+
+        .content_3_one span:nth-child(1){
+            font-size: 50px;
+            font-style: italic;
+            color:#f5e327;
+            text-indent: 1em;
+        }
+        .content_3_one p:nth-of-type(1){
+            font-size: 25px;
+            font-weight: 700;
+            font-family: 等线;
+            
+        }
+
+        .content_3_one_article{
+            border-top: 2px solid black;
+            margin-top: 10px;
+            padding-top: 20px;
+        }
+        .content_3_one_article p{
+            font-size: 15px;
+            color: gray;
+        }
+        .content_3_one_article p:nth-child(1)::first-letter{
+            font-size: 80px;
+            color:#f5e327;
+            float: left;
+            margin: 5px;
+        }
+        .content_3_one_article p:nth-of-type(1){
+            font-weight: 500;
+            font-size: 15px;
+            font-family: none;
+            
+        }
+        .content_3_one_article p:nth-of-type(n+2){
+            text-indent: 2em;
+        }
+
+        .content_3_two{
+            float: right;
+            width: 48%;
+        }
+        .content_3_two_img{
+            width: 100%;
+            height: 300px;
+            background-image: url("pic3.png");
+            background-repeat: no-repeat;
+        }
+        .content_3_two_img p:nth-of-type(1){
+            display: block;
+            border-left: 3px solid #72b16a;
+            color: white;
+            font-size: 20px;
+            position: relative;
+            top:76%;
+            left: 12%;
+            padding-left: 20px;
+        }
+        .content_3_two_img p:nth-of-type(2){
+            color: #72b16a;
+            font-size: 13px;
+            position: relative;
+            top:70%;
+            left: 42%;
+        }
+        .content_3_two_meun{
+            background-color: #eeedd6;
+            width: 100%;
+            height: 318px;
+        }
+        .content_3_two_meun_triangle{
+            width: 0;
+            height: ;
+            border-width: 8px;
+            border-style: solid;
+            border-color:transparent transparent #10456b transparent ;
+        }
+        .content_3_two_meun_list{
+            padding-top: 20px;
+            padding-left: 30px;
+        }
+        .content_3_two_meun_list p:nth-of-type(1){
+            display: block;
+            position: relative;
+            top: -15px;
+            left: 25px;
+            font-size: 15px;
+        }
+        .list_info{
+            width: 55%;
+            height: 150px;
+            background-color: #d45d5c;
+        }
+        .list_info span:nth-of-type(1){
+            width: 55px;
+            font-size: 100px;
+            font-weight: 900;
+            color: white;
+            border-right: 2px solid white;
+            font-family: 等线;
+            display: block;
+            position: relative;
+            top:15%;
+            left: 5px;
+        }
+        .list_info span:nth-of-type(2){
+            width: 150px;
+            font-size: 17px;
+            font-style: italic;
+            color: white;
+            display: block;
+            position: relative;
+            top:-48%;
+            left:32%;
+        }
+        .list_info span:nth-of-type(3){
+            width: 150px;
+            font-size: 12px;
+            color: white;
+            display: block;
+            position: relative;
+            top:-43%;
+            left:32%;
+        }
+        .list_info_word{
+            width:160px;
+            position: relative;
+            top: -169px;
+            left: 57%;
+        }
+        .list_info_word span:nth-of-type(n){
+            font-size: 80px;
         }
     </style>
 <body>
-    <div class="container">
+    <div class="container float_clear">
         <div class="top">
             <div class="top_right"></div>
             <span class="top_date">2020.03</span>
         </div>
 
-        <div class="content_1">
-            <img src="page.png" />
-            <div class=fliter_img_lefr></div>
-            <div class="filter_img_right"></div>
+        <div class="content_1_img float_clear">
+            <div class="fliter_img">
+                <img src="page.png" />
+                <div></div>
+                <div></div>
+            </div>
+
+            <div class="content_1_word float_clear">
+                <p><a href="#">About</a></p>
+                <p><a href="#">TECHNOLOGE</a></p>
+                <p>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA</p>
+                <p>700</p>
+                <p>3.2</p>
+                <p>css</p>
+                <p>ssssssssssssssss</p>
+            </div>
+        </div>
+
+        <div class="content_2_article">
+            <div class="content_2_article_one">
+                <a href="">What</a>
+                <p>前端前端前端前端前端前端前端前端前
+                   端前端前端前端前端前端前端前端前端
+                   端前端前端前端前端前端前端前端前端
+                   端前端前端前端前端前端前端前端前端
+                   端前端前端前端前端前端前端前端前端
+                   端前端前端前端前端前端前端前端前端
+                   端前端前端前端前端
+                </p>
+            </div>
+            <div class="content_2_article_two">
+                <a href="">When</a>
+                <p>前端前端前端前端前端前端前端前端前
+                   端前端前端前端前端前端前端前端前端
+                   端前端前端前端前端前端前端前端前端
+                   端前端前端前端前端前端前端前端前端
+                   端前端前端前端前端前端前端前端前端
+                   端前端前端前端前端前端前端前端前端
+                   端前端前端前端前端
+                </p>
+            </div>
+            <div class="content_2_article_three">
+                <a href="">How</a>
+                <p>前端前端前端前端前端前端前端前端前
+                   端前端前端前端前端前端前端前端前端
+                </p>
+                <p>What........ </p>
+                <p>What........ </p>
+                <p>What........ </p>
+                <p>40%</p>
+                <p>40%</p>
+                <p>40%</p>
+            </div>
+        </div>
+
+        <div class="content_3 float_clear">
+            <div class="content_3_one">
+                <p><span>THE</span>&nbsp;&nbsp;&nbsp;&nbsp;TECHNOLOGE OF FRONT 前端技术领域</p>
+                <div class="content_3_one_article">
+                    
+                    <p>前前前前前前前前前前前前前前前前前前前前前前前
+                       前前前前前前前前前前前前前前前前前前前前前前前
+                       前前前前前前前前前前前前前前前前前前前前前前前
+                       前前前前前前前前前前前前前前前前前前前前前前前
+                       前前前前前前前前前前前前前前前前前前前前前前前
+                       前前前前前前前前前前前前前前前前前前前前前前前
+                       前前前前前前前前前前前前前前前前前前前前前前前
+                       前前前前前前前前前前前前前前前前前前前前前前前
+                    </p>
+                    <img src="pic2.png" class="f_r">
+                    <p>前前前前前前前前前前前前前前前前前前前前前前前
+                       前前前前前前前前前前前前前前前前前前前前前前前
+                       前前前前前前前前前前前前前前前前前前前前前前前
+                       前前前前前前前前前前前前前前前前前前前前前前前
+                       前前前前前前前前前前前前前前前前前前前前前前前
+                       前前前前前前前前前前前前前前前前前前前前前前前
+                       前前前前前前前前前前前前前前前前前前前
+                    </p>
+                    <p>前前前前前前前前前前前前前前前前前前前前前前前
+                       前前前前前前前前前前前前前前前前前前前前前前前
+                       前前前前前前前前前前前前前前前前前前前前前前前
+                       前前前前前前前前前前前前前前前前前前前前前前前
+                       前前前前前前前前前前前前前前前前前前前前前前前
+                       前前前前前前前前前前前前前前前前前前前前前前前
+                       前前前前前前前前前前前前前前前前前前前前前前前
+                       前前前前前前前前前前前前前前前前前前前前前前前
+                    </p>
+                    
+                </div>
+            </div>
+
+            <div class="content_3_two">
+                <div class="content_3_two_img">
+                    <p>前端技术</p>
+                    <p>前端技术前端技术</p>
+                </div>
+                <div class="content_3_two_meun">
+                    <div class="content_3_two_meun_list">
+                        <div class="content_3_two_meun_triangle"></div>
+                        <p>前端前端前端．．．．．．．．．．．前端</p>
+                    </div>
+                    <div class="content_3_two_meun_list">
+                        <div class="content_3_two_meun_triangle"></div>
+                        <p>前端前端前端．．．．．．．．．．．前端</p>
+                    </div>
+                    <div class="content_3_two_meun_list">
+                        <div class="content_3_two_meun_triangle"></div>
+                        <p>前端前端前端．．．．．．．．．．．前端</p>
+                    </div>
+
+                    <div class="list_info">
+                        <span>0</span>
+                        <span>ONE TWO THREEE FOUR FIVE</span>
+                        <span>hello world hello world hello world
+                            hello world hello world hello world
+                        </span>
+                    </div>
+
+                    <div class="list_info_word">
+                        <p><span>“</span>
+                             world hello world hello world
+                             hello world  hello world  hello world
+                        <span>”</span></p>
+                    </div>
+                </div>
+            </div>
+
         </div>
     </div>
 </body>

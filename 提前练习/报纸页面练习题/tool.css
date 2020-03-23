@@ -1,0 +1,11 @@
+.float_clear:after{
+    content: "";
+    display: block;
+    clear: both;
+}
+.f_l{
+    float: left;
+}
+.f_r{
+    float: right;
+}
