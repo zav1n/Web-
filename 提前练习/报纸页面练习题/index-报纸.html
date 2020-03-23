@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>报纸</title>
+</head>
+    <style>
+        *{
+            margin: 0;
+            padding: 0;
+        }
+        html,body{
+            height: 100%;
+            
+        }
+        .container{
+            margin: auto;
+
+            width: 800px;
+            height: 100%;
+            border: 1px dashed black;
+        }
+        .top{
+            width: 100%;
+            height: 40px;
+            border-bottom: 1px solid black;
+        }
+        .top_right{
+            width: 70px;
+            height: 40px;
+            background-color: #d45d5c;
+        }
+        .top_date{
+            display: block;
+            float: right;
+            margin-top: -18px;
+            width:50px;
+            font-size: 15px;
+            font-weight: 700;
+            color: coral;
+        }
+        .content_1{
+            width: 415px;
+            height: 195px;
+            background-color: coral;
+            margin-top: 22px;
+        }
+        .content_1 img:first-child{
+            width: 415px;
+            height: 195px;
+        }
+    </style>
+<body>
+    <div class="container">
+        <div class="top">
+            <div class="top_right"></div>
+            <span class="top_date">2020.03</span>
+        </div>
+
+        <div class="content_1">
+            <img src="page.png" />
+            <div class=fliter_img_lefr></div>
+            <div class="filter_img_right"></div>
+        </div>
+    </div>
+</body>
+</html>
