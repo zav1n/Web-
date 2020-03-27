@@ -10,15 +10,18 @@
 
   <body>
     <script>
-      let str = ""
-      for (let i = 1; i <= 9; i++) {
-        for (let j = 1; j <= i; j++) {
-          // str += `${j} * ${i} = ${i * j} `
-          str +=  "*"
-        }
-        str += "\n"
-      }
-      console.log(str)
+      let boo1 = true
+      let boo2 = false
+
+      //隐式转换
+      //!!
+      console.log(!1) //false
+      console.log(!!1) //true
+      //显式转换
+      // Boolean()
+
+      console.log(Boolean(null))
+      console.log(Boolean(undefined))
     </script>
   </body>
 

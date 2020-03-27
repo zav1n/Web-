@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        *{margin: 0;padding: 0  ;}
+        #bg {
+            width: 650px;
+            height: 600px;
+            margin: 0 auto;
+            background: url(img/turntable-bg.jpg) no-repeat;
+            position: relative;
+        }
+ 
+        .img1 {
+            position: absolute;
+            z-index: 10;
+            top: 155px;
+            cursor: pointer;
+            left: 247px;
+        }
+ 
+        .img2{
+            position: absolute;
+            z-index: 5;
+            top: 60px;
+            left: 116px;
+            transition: all 4s ;
+        }
+    </style>
+
+</head>
+<body>
+     <div id="bg">
+         <img src="img/pointer.png" alt="pointer" class="img1">
+         <img src="img/turntable.png" alt="turntable" class="img2">
+    </div> 
+
+    <script>
+        let oPointer = document.getElementsByTagName("img")[0];
+        let oTurntable = document.getElementsByTagName("img")[1];
+
+        let ontime = true;
+        let num = 0;
+        oPointer.onclick = function(){
+            if(ontime){
+                ontime = !ontime;
+                oTurntable.style.transform = "rotate(0)";
+                run();  
+            }
+        }
+        function run(){
+            let timer;
+            num = Math.floor(Math.random()*3600 + 720) + num
+                oTurntable.style.transform = `rotate(${num}deg)`;
+                setTimeout(function(){
+                    ontime = !ontime;
+                },4000)
+            console.log(num)
+        }
+    </script>
+</body>
+</html>

@@ -1,4 +1,4 @@
 
 
-console.log(Number.parseInt(z,25));
+console.log({} == {});
 
