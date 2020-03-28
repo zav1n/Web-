@@ -39,24 +39,26 @@
     </div> 
 
     <script>
-        let oPointer = document.getElementsByTagName("img")[0];
+        let oPointer = document.getElementsByTagName("img")[0];  //获取第一个TagName("p")的意思，如果后面的是[1]则是获取第二个TagName("p")，以此类推
         let oTurntable = document.getElementsByTagName("img")[1];
 
         let ontime = true;
         let num = 0;
         oPointer.onclick = function(){
             if(ontime){
-                ontime = !ontime;
+                // ontime = !ontime; //关掉
+                //转盘(oTurntable)的  样式(style)  的  改变外观(transform)  = 旋转(rotate)
                 oTurntable.style.transform = "rotate(0)";
                 run();  
             }
         }
         function run(){
-            let timer;
+            //let timer;   什么用?
             num = Math.floor(Math.random()*3600 + 720) + num
                 oTurntable.style.transform = `rotate(${num}deg)`;
-                setTimeout(function(){
-                    ontime = !ontime;
+                //隔几秒才能点击开始转
+                setTimeout(function(){  
+                    // ontime = !ontime;//开启
                 },4000)
             console.log(num)
         }

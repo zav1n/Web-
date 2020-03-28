@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        * {
+            text-align: center;
+        }
+    
+        nav li {
+            display: inline;
+            /* width: 24%; */
+            text-decoration: none;
+            padding: 15px;
+        }
+    
+        li:hover {
+            background-color: lightblue;
+        }
+    
+        section {
+            height: 300px;
+        }
+    </style>
+</head>
+<body>
+    <nav id="nav">
+        <ul>
+            <li class="act">选卡1</li>
+            <li>选卡2</li>
+            <li>选卡3</li>
+            <li>选卡4</li>
+        </ul>
+    </nav>
+    <div id="container">
+        <section class="tab" style="background-color: tomato">内容1</section>
+        <section class="tab" style="background-color: cyan">内容2</section>
+        <section class="tab" style="background-color: blueviolet">内容3</section>
+        <section class="tab" style="background-color: gold">内容4</section>
+    </div>
+    <script>
+        // window.onload = function () {
+        var nav = document.getElementById('nav')
+        var oNav = nav.getElementsByTagName('li')
+        var container = document.getElementById('container')
+        var oDiv = container.getElementsByClassName('tab')
+
+            for (var m = 1; m < oNav.length; m++) {
+                oDiv[m].style.display = "none";
+            }
+            //初始化页面
+            for (var i =0;i < oNav.length; i++){
+                    oNav[i].ind = i;
+            //循环绑定事件 并每次把 i的 值存放在 oNav[i]中
+                oNav[i].onclick = function(){
+                    for(var a = 0; a < oNav.length; a++){
+                        oDiv[a].style.display ='none'
+                    }
+                    //触发事件先 初始掉内容
+                    oDiv[this.ind].style.display = 'block'
+                    //只有下标为 this.ind才显示,this.ind的值是 oNav[i] 绑定循环是存放的i
+                }
+            }
+        
+    </script>
+</body>
+</html>
