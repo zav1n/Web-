@@ -7,9 +7,19 @@
 </head>
 <body>
     <script>
-        for (var i = 0; i < 10; i++) {
-            continue;  //一直在这里循环  没有执行道下面的输出,当执行道 i=10 i不小于10  就跳出循环了
-            console.log(i)
+        for (var i = 3; i < 12; i++) {
+            if (i < 3) {
+            i++
+            break
+                }                /*这个if一开始就没执行,所以break也没执行
+                                原因是一开始i=3,i<3不成立
+                                */
+            
+            if (i > 9) {      
+            i += 2
+            continue
+            }
+            i--
         }
         console.log(i)
     </script>

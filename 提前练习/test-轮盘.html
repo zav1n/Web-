@@ -34,8 +34,8 @@
 </head>
 <body>
      <div id="bg">
-         <img src="img/pointer.png" alt="pointer" class="img1">
-         <img src="img/turntable.png" alt="turntable" class="img2">
+         <img src="" alt="pointer" class="img1">
+         <img src="指针.png" alt="turntable" class="img2">
     </div> 
 
     <script>
@@ -46,21 +46,20 @@
         let num = 0;
         oPointer.onclick = function(){
             if(ontime){
-                // ontime = !ontime; //关掉
+                 ontime = !ontime; 
                 //转盘(oTurntable)的  样式(style)  的  改变外观(transform)  = 旋转(rotate)
                 oTurntable.style.transform = "rotate(0)";
                 run();  
             }
         }
         function run(){
-            //let timer;   什么用?
-            num = Math.floor(Math.random()*3600 + 720) + num
+            let timer;   //什么用?
+            num = Math.floor(Math.random()*360 + 720) + num
                 oTurntable.style.transform = `rotate(${num}deg)`;
                 //隔几秒才能点击开始转
                 setTimeout(function(){  
-                    // ontime = !ontime;//开启
+                     ontime = !ontime;
                 },4000)
-            console.log(num)
         }
     </script>
 </body>

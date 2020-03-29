@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        *{margin: 0;
+        padding: 0  ;
+        position: absolute;
+        }
+        #bg{
+            width: 300px;
+            height: 300px;
+        }
+        #pointer{
+            top: 44.5%;
+            left: 21%;
+        }
+        #circle{
+
+        }
+    </style>
+
+</head>
+<body>
+     <div id="bg">
+         <img src="指针.png" alt="pointer" id="pointer">
+         <img src="圆圈.png" alt="pointer" id="circle">
+         <input type="button" value="开始" id="star" />
+    </div> 
+    <script>
+        let opointer = document.getElementById('pointer')
+        let ocircle = document.getElementById('circle')
+        let obtn = document.getElementById('star')
+
+        let num = 0;
+        let ontime = true;
+        obtn.onclick = function(){
+            run("4s")
+        }
+
+        function run(timer){
+                num = Math.floor(Math.random()*360 + 720) + num
+                console.log("num = "+num)
+                opointer.style.transform = `rotate(${num}deg)`;
+                opointer.style.transition = timer //旋转时间样式
+            }
+    </script>
+    
+</body>
+</html>
