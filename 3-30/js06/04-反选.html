@@ -25,6 +25,8 @@
         for (let i = 0; i < aInput.length; i++) {
           //查询到每个多选框的 选中状态 选中就是true 不选中false
           // console.log(aInput[i].checked)
+
+          /*------------------------重点----------------------------------*/
           aInput[i].checked = !aInput[i].checked //拿到点击之前的这个check的状态 并取反
           //原来没选中的变成选中的 原来选中的 变成没选中的
         }
