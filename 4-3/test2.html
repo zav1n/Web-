@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>节点排序</title>
+</head>
+
+<body>
+    <input type="button" value="排序" id="btn">
+    <ul id="container">
+        <li>3</li>
+        <li>1</li>
+        <li>2</li>
+        <li>5</li>
+        <li>4</li>
+    </ul>
+    <script>
+        let oBtn = document.getElementById("btn");
+        let oUl = document.getElementById("container");
+        let aLi = oUl.children;
+
+        let iNow = ""
+        oBtn.onclick = () => {
+            for (let i = 0; i < aLi.length; i++) {
+                let liTxt = aLi[i].innerHTML
+                console.log(liTxt)
+                iNow += liTxt
+                let sortiNow = Array.from(iNow).sort(function (a, b) {
+                    if (a < b) {
+                        return -1
+                    }
+                })
+                console.log(liTxt[i])
+                liTxt[i].innerHTML = sortiNow[i]
+            }
+        }
+    </script>
+</body>
+
+</html>
