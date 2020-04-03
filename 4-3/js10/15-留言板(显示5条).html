@@ -18,30 +18,33 @@
       <!-- <li>1111</li> -->
     </ul>
     <script>
-      let [oTxt, oBtn, oResult] = [document.getElementById("txt"),
+      /**
+       * 如何做一个最多只能展示5行最新内容的留言板
+       * */
+      let [oTxt, oBtn, oResult] = [
+        document.getElementById("txt"),
         document.getElementById("btn"),
         document.getElementById("result"),
       ]
-      let iNow = 1
-      let arr = []
 
       //2.绑定事件
       oBtn.onclick = function () {
-        let newEle = appendEle(oResult, "li", `第${iNow++}楼: ${oTxt.value}`)
-        newEle.onclick = () => {
-          oResult.removeChild(newEle)
-        }
-      }
-
-      function appendEle(parent, eleName, value) {
         //1 生产一个li标签
-        let newLi = document.createElement(eleName)
+        let newLi = document.createElement("li")
         //2. 生产一个文本节点
-        let newTxt = document.createTextNode(value);
+        let newTxt = document.createTextNode(oTxt.value);
         //3. 拼接
-        parent.appendChild(newLi)
+        oResult.insertBefore(newLi, oResult.firstElementChild)
         newLi.appendChild(newTxt)
-        return newLi
+
+
+
+        //4删除掉最老的标签
+        if (oResult.children.length === 6) {
+          oResult.removeChild(oResult.lastElementChild);
+        }
+
+        oTxt.value = ""
       }
     </script>
   </body>

@@ -18,30 +18,43 @@
       <!-- <li>1111</li> -->
     </ul>
     <script>
-      /**
-       * 点击li列表时,当前被点击的li会被删除
-      */
       let [oTxt, oBtn, oResult] = [document.getElementById("txt"),
         document.getElementById("btn"),
         document.getElementById("result"),
       ]
-
+      let arr = []
       //2.绑定事件
       oBtn.onclick = function () {
-        //1 生产一个li标签
-        let newLi = document.createElement("li")
-        //2. 生产一个文本节点
-        let newTxt = document.createTextNode(oTxt.value);
-        //3. 拼接
-        oResult.insertBefore(newLi, oResult.firstElementChild)
-        newLi.appendChild(newTxt)
-
-
-        //新建一个点击事件,绑定在li
-        newLi.onclick = () => {
-          oResult.removeChild(newLi)
-        }
+        //在数据层 中 增加一条新数据
+        arr.push(oTxt.value)
+        //这个方法用来重绘整个页面
+        init(arr, oResult)
         oTxt.value = ""
+      }
+
+      function init(value, parent) {
+        //先清空所有的旧内容
+        parent.innerHTML = ""
+        //在执行for循环去绘制新内容
+        arr.forEach((e, i) => {
+          let newEle = appendEle(parent, "li", `第${i+1}楼: ${e}`)
+          newEle.onclick = () => {
+            arr.splice(i, 1)
+            //因为数据发生了变动 所以也需要重绘页面
+            init(arr, oResult)
+          }
+        })
+      }
+
+      function appendEle(parent, eleName, value) {
+        //1 生产一个li标签
+        let newLi = document.createElement(eleName)
+        //2. 生产一个文本节点
+        let newTxt = document.createTextNode(value);
+        //3. 拼接
+        parent.appendChild(newLi)
+        newLi.appendChild(newTxt)
+        return newLi
       }
     </script>
   </body>

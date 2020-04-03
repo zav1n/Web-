@@ -27,27 +27,38 @@
         let oPause = document.getElementById("pause");
         let oBack = document.getElementById("back");
 
-        let timer = null;
-        let iNow = 0;
-        let index = article.split(" ")
-
-        for (let i = 0; i < article.length; i++) {
-            let a1 = article.split(" b ")
-            let a2 = a1[i].substring(0, 1).toUpperCase()
-            let a3 = a1[i].substring(1).toLowerCase()
-            let a4 = [a2 + a3]
-            
-            console.log(a4)
-            //已经获取到单词,怎么拼接
+        let bigArticle = article.split(" ")
+        let cpWord = ""
+        for (let i = 0; i < bigArticle.length; i++) {
+            let firstWord = bigArticle[i].substring(0, 1).toUpperCase()
+            let nextWord = bigArticle[i].substring(1).toLowerCase()
+            cpWord += firstWord + nextWord + " "
+            console.log(cpWord)
         }
 
 
 
+        // let index = article.split(" ")
+        // let articleBig = ""
+        // for (let i = 0; i < index.length; i++) {
+        //     let firstLetter = index[i][0]
+        //     let firstLetter2 = firstLetter.toUpperCase()
+        //     let nextWord = index[i].slice(1)
+        //     let cpword = firstLetter2 + nextWord
+        //     articleBig += cpword + " "
+        //     console.log(articleBig)
+        // }
+
+        
+        
+        let timer = null;
+        let iNow = 0;
+        
         oStart.onclick = function () {
             clearInterval(timer) //按多次时不会重复调用
             timer = setInterval(() => {
-                oNews.innerHTML += article[iNow++]
-                if (iNow >= article.length) {
+                oNews.innerHTML += cpWord[iNow++]
+                if (iNow >= cpWord.length) {
                     clearInterval(timer)
                 }
             }, 100);
@@ -60,7 +71,7 @@
         oBack.onclick = function () {
             clearInterval(timer)
             timer = setInterval(() => {
-                oNews.innerHTML = article.substring(0, iNow--)
+                oNews.innerHTML = cpWord.substring(0, iNow--)
                 if (iNow < 0) {
                     clearInterval(timer)
                 }

@@ -30,8 +30,9 @@
         //2. 生产一个文本节点
         let newTxt = document.createTextNode(oTxt.value);
         //3. 拼接
-        oResult.appendChild(newLi)
-        newLi.appendChild(newTxt)
+        oResult.appendChild(newLi)//在ul里面增加新的li列表
+        newLi.appendChild(newTxt)//在新的li列表里面增加内容
+        oTxt.value = ""
       }
     </script>
   </body>

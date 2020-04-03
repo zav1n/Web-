@@ -18,6 +18,10 @@
       <!-- <li>1111</li> -->
     </ul>
     <script>
+/**
+ * 输出循序倒过来
+*/
+
       let [oTxt, oBtn, oResult] = [document.getElementById("txt"),
         document.getElementById("btn"),
         document.getElementById("result"),
@@ -30,8 +34,10 @@
         //2. 生产一个文本节点
         let newTxt = document.createTextNode(oTxt.value);
         //3. 拼接
-        oResult.insertBefore(newLi, oResult.firstElementChild)
-        newLi.appendChild(newTxt)
+        oResult.insertBefore(newLi, oResult.firstElementChild)//插入最前面     xx.inserBefore(新的,旧的[要被挤下去或者替换的地方])
+        newLi.appendChild(newTxt)  //在新的li列表里面增加内容
+
+        oTxt.value = ""
       }
     </script>
   </body>

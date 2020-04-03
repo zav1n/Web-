@@ -22,28 +22,17 @@
         document.getElementById("btn"),
         document.getElementById("result"),
       ]
+      let iNow = 1
       let arr = []
 
       //2.绑定事件
       oBtn.onclick = function () {
-        //在数据层 中 增加一条新数据
-        arr.push(oTxt.value)
-        //这个方法用来重绘整个页面
-        init(arr, oResult)
-      }
-
-      function init(value, parent) {
-        //先清空所有的旧内容
-        parent.innerHTML = ""
-        //在执行for循环去绘制新内容
-        arr.forEach((e, i) => {
-          let newEle = appendEle(parent, "li", `第${i+1}楼: ${e}`)
-          newEle.onclick = () => {
-            arr.splice(i, 1)
-            //因为数据发生了变动 所以也需要重绘页面
-            init(arr, oResult)
-          }
-        })
+        let newEle = appendEle(oResult, "li", `第${iNow++}楼: ${oTxt.value}`)
+        newEle.onclick = () => {
+          oResult.removeChild(newEle)
+          //实现了删除,但是删除了之后第几楼不会跟着删除,如何实现删了之后对应的楼层也删了?
+        }
+        oTxt.value = ""
       }
 
       function appendEle(parent, eleName, value) {
