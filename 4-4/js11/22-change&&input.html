@@ -17,15 +17,18 @@
       <option value="3">3</option>
       <option value="4">4</option>
     </select>
+    <p id="testP"></p>
     <script>
       let oInput = document.getElementsByTagName("input")[0];
       let oNextInput = document.getElementsByTagName("input")[1];
       let oSelect = document.querySelector("#province");
+      let oP = document.querySelector("#testP")
       //如果你要主动调用事件的话 element.type()
 
       //监听input是否有输入内容
       oInput.addEventListener("input", function () {
         console.log(this.value)
+        oP.innerHTML +=this.value
         if (this.value.length >= 6) {
           // oInput.blur()
           oNextInput.focus()
