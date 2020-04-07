@@ -42,7 +42,7 @@
             color: green;
         }
 
-        #removeLi {
+        .removeLi {
             cursor: pointer;
             color: red;
         }
@@ -75,7 +75,7 @@
 
     <script>
         let oUl = document.querySelector("ul")
-        let oLi = document.getElementsByTagName("li")
+        let oLi = oUl.querySelector("li")
 
         let oAddNew = document.getElementById("addNew")
         let oRemoveLi = document.getElementById("removeLi")
@@ -89,24 +89,37 @@
             ]
         //添加
         oAddNew.addEventListener("click", e => {
-            let newLi = document.createElement("li")
-            newLi.innerHTML += `
-                                <div>${oName.value}</div>
-                                <div>${age.value}</div>
-                                <div>${sex.value}</div>
-                                <div>${salary.value}</div>
-                                <div id="removeLi">删除</div>
-                                `
-            oUl.appendChild(newLi)
-
+            let creatLi = appendLi(oUl, "li", "div", "div", "div", "div", "div")
         })
 
-            oRemoveLi.addEventListener("click", e => {
-        for (let i = 0; i < oLi.length; i++) {
-                oUl.removeChild(oLi[i])
-                console.log(oLi[i]);
+        oRemoveLi.addEventListener("click", e => {
+        })
+        //事件委托  创建li
+        function appendLi(ulParent, liElement, divElement) {
+            let newLi = document.createElement(liElement)
+            let newDivName = document.createElement(divElement)
+            let newDivAge = document.createElement(divElement)
+            let newDivSex = document.createElement(divElement)
+            let newDivSalary = document.createElement(divElement)
+            let newDivRemove = document.createElement(divElement)
+            
+            ulParent.appendChild(newLi)
+            newLi.appendChild(newDivName)
+            newLi.appendChild(newDivAge)
+            newLi.appendChild(newDivSex)
+            newLi.appendChild(newDivSalary)
+            newLi.appendChild(newDivRemove)
+
+            console.log(newDivRemove);
+            newDivName.innerHTML = oName.value
+            newDivAge.innerHTML = age.value
+            newDivSex.innerHTML = sex.value
+            newDivSalary.innerHTML = salary.value
+            newDivRemove.innerHTML = "删除"
+            newDivRemove.className = "removeLi"
+
         }
-            })
+
 
 
 
