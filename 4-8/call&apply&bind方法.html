@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+
+  <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+  </head>
+
+  <body>
+    <div id="div1">call</div>
+    <div id="div2">apply</div>
+    <div id="div3">bind</div>
+    <script>
+      let oDiv1 = document.querySelector("#div1")
+      let oDiv2 = document.querySelector("#div2")
+      let oDiv3 = document.querySelector("#div3")
+      let copyFn
+
+      let change = function (color, width, height) {
+        this.style.backgroundColor = color
+        this.style.width = width
+        this.style.height = height
+      }
+
+      oDiv1.addEventListener("click", function () {
+        change.call(this, "pink", "100px", "100px")
+        copyFn = change.bind(this,oDiv3)
+      })
+      oDiv2.addEventListener("click", function () {
+        change.apply(this, ["skyblue", "100px", "100px"])
+        copyFn = change.bind(this,oDiv3)
+      })
+      oDiv3.addEventListener("click", function () {
+        change.bind(this,"pink","100px","100px")()
+      })
+    </script>
+  </body>
+
+</html>

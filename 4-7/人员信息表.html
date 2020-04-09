@@ -46,6 +46,10 @@
             cursor: pointer;
             color: red;
         }
+        #removeLi {
+            cursor: pointer;
+            color: red;
+        }
 
         input {
             width: 70px;
@@ -75,7 +79,6 @@
 
     <script>
         let oUl = document.querySelector("ul")
-        let oLi = oUl.querySelector("li")
 
         let oAddNew = document.getElementById("addNew")
         let oRemoveLi = document.getElementById("removeLi")
@@ -93,6 +96,7 @@
         })
 
         oRemoveLi.addEventListener("click", e => {
+            console.log('weqe');
         })
         //事件委托  创建li
         function appendLi(ulParent, liElement, divElement) {
@@ -110,16 +114,16 @@
             newLi.appendChild(newDivSalary)
             newLi.appendChild(newDivRemove)
 
-            console.log(newDivRemove);
             newDivName.innerHTML = oName.value
             newDivAge.innerHTML = age.value
             newDivSex.innerHTML = sex.value
             newDivSalary.innerHTML = salary.value
             newDivRemove.innerHTML = "删除"
-            newDivRemove.className = "removeLi"
+            newDivRemove.id = "removeLi"
 
         }
-
+        
+        
 
 
 

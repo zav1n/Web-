@@ -7,13 +7,13 @@
 </head>
 <style>
     div{
-        width: 10px;
-        height: 10px;
+        width: 30px;
+        height: 30px;
         background-color: pink;
         position: fixed;
     }
 </style>
-<body style="height: 2000px;">
+<body style="height: 5000px;">
     <div id="div1"></div>
     <script>
         document.addEventListener("scroll",e=>{
@@ -23,9 +23,9 @@
             let cHeight = document.documentElement.clientHeight
             let oDiv = document.getElementById("div1")
 
-            
-            oDiv.style.width = sTop+"px"
-
+            console.log(sTop/(sHeight-cHeight));
+            oDiv.style.width = sTop/(sHeight-cHeight)*100+"%"
+            oDiv.innerHTML = Number.parseInt(sTop/(sHeight-cHeight)*100)+"%"
             if(sHeight-sTop === cHeight){
                 console.log('到底部了');
             }

@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <!-- 版本一 -->
+    <ul id="context"></ul>
+    <!-- 版本二 -->
+    <p>分割线</p>
+    <ul id="container"></ul>
+    <!-- 最初版本 -->
+    <script>
+        let oUl = document.querySelector("#context")
+        let colorbox = ["pink","blue","yellow","","skyblue","orange","gray","darkblue","red","cyan"]
+        for(let i=0;i<=10;i++){
+            let creatLi = document.createElement("li")
+            oUl.appendChild(creatLi)
+        }
+
+        let oLi = document.querySelectorAll("li")
+        for(let j=0;j<oLi.length;j++){
+            oLi[j].style.backgroundColor = colorbox[j%colorbox.length]
+
+            oLi[j].addEventListener("mouseenter",e=>{
+                oLi[j].style.backgroundColor = "black"
+            })
+            oLi[j].addEventListener("mouseleave",e=>{
+                oLi[j].style.backgroundColor = colorbox[j%colorbox.length]
+            })
+        }
+// -------------------------------------------------------------------------------------------------------------------------
+        //用函数创建li并且参数里面有 parentEle  size   colorBox
+        let oParent = document.querySelector("#container");
+      let box = ["red", "yellow", "blue"]
+      let createLi = (parentEle, size, colorBox) => {
+        //一直在初始化li
+        for (let i = 0; i < size; i++) {
+          //1.创建一个li标签
+          let newLi = document.createElement("li");
+          //用一个字符串来存储原始的颜色
+          let oldColor = colorBox[i % colorBox.length]
+          //初始化li刚开始的颜色
+          newLi.setAttribute("style", `background-color: ${oldColor}`)
+          //放一个中立变量 来存储当时的颜色
+          newLi.setAttribute("_color", oldColor)
+          //2. 父元素拼接一个li子标签
+          parentEle.appendChild(newLi)
+
+          newLi.addEventListener("mouseout", function () {
+            //访问之前存储的颜色
+            this.style.backgroundColor = this.getAttribute("_color")
+          })
+
+          newLi.addEventListener("mouseover", function () {
+            this.style.backgroundColor = "green"
+          })
+        }
+      }
+      createLi(oParent, 9, box);
+    </script>
+</body>
+</html>
