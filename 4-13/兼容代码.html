@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Document</title>
+</head>
+
+<body>
+  <ul id="container">
+    <li></li>
+    <li></li>
+    <li></li>
+
+  </ul>
+  <script>
+    var bindEvent = (function(){
+      if (window.addEventListener) {
+  
+        return function (e, type, callback, useCapture) {
+          //从第二个到第十个标签都绑定一个点击事件
+          e.addEventListener(type, callback, useCapture)
+        }
+      } else if (window.attachEvent) {
+        //只有非标准浏览器的用户会运行这里的代码
+        return function (e, type, callback) {
+          e.attachEvent("on" + type, callback)
+        }
+      }
+    }())
+    
+
+    var aLi = document.querySelectorAll("#container li");
+    for(var i = 0; i < aLi.length; i++) {
+      (function(i){
+        bindEvent(aLi[i], "click", function () {
+          aLi[i].style.backgroundColor = "skyblue"
+        })
+      }(i))
+    }
+    
+  </script>
+</body>
+
+</html>

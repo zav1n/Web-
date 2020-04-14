@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        let i =1
+        function show(){
+            console.log(i++);
+        }
+        show()//1
+        //2 被销毁
+        show()//2
+        //3被销毁
+        show()//3
+        //4被销毁
+
+        console.log(i)//
+    </script>
+</body>
+</html>

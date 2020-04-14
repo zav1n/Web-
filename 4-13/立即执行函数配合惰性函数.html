@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Document</title>
+</head>
+
+<body>
+  <ul id="container">
+    <li></li>
+    <li></li>
+    <li></li>
+    <li></li>
+    <li></li>
+    <li></li>
+    <li></li>
+    <li></li>
+    <li></li>
+    <li></li>
+  </ul>
+  <script>
+    //判断十次 -> 判断一次
+    //判断时机? 浏览器打开的一瞬间 立马判断?
+
+    //判断客户端是什么浏览器
+    //惰性函数 利用立即执行函数 为其赋值 赋值后的结果无需再判断
+    //我十次初始化都不需要执行全额的代码(即不需要判断) 且在页面打开的一瞬间 bindEvent已经通过立即执行函数配合惰性函数 找到适当的函数体
+    var bindEvent = (function(){
+      //在代码开始运行的时候 就已经开始判断
+      if (window.addEventListener) {
+        //只有标准浏览器的用户会运行这个代码
+  
+        return function (ele, type, callback, useCapture) {
+          //从第二个到第十个标签都绑定一个点击事件
+          ele.addEventListener(type, callback, useCapture)
+        }
+      } else if (window.attachEvent) {
+        //只有非标准浏览器的用户会运行这里的代码
+        return function (ele, type, callback) {
+          ele.attachEvent("on" + type, callback)
+        }
+      }
+    }())
+    
+
+    var aLi = document.querySelectorAll("#container li");
+    for(var i = 0; i < aLi.length; i++) {
+      (function(i){
+        //绑定一个鼠标点击事件
+        bindEvent(aLi[i], "click", function () {
+          aLi[i].style.backgroundColor = "yellow"
+        })
+      }(i))
+    }
+    
+  </script>
+</body>
+
+</html>
